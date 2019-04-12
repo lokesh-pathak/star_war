@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+	<p>Search Result:</p>
+	<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Title</th>
+	        <th>Image</th>
+	        <th>Add</th>
+	      </tr>
+	    </thead>
+    <tbody>
+    	{% for name in data%}
+			<tr>
+				<td>{{name}}</td>
+				<td>No Image</td>
+				<td>
+					<button class="btn btn-primary" onclick="location.href='{% url 'add' %}?name={{name}}'">Add</button>
+					</td>
+			</tr>
+      	{%endfor%}
+    </tbody>
+  </table>
+{%endblock%}

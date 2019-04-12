@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <form action="{% url 'planet'%}" method="post">
+              {%csrf_token%}
+              Search Planets: <input type="text" name="name" class="form-control"><br>
+              <input type="submit" value="Search" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form action="{% url 'film'%}" method="post">
+              {%csrf_token%}
+              Search Films: <input type="text" name="name" class="form-control"><br>
+              <input type="submit" value="Search"  class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+    <br>
+    <div>
+        <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Title</th>
+	        <th>Image</th>
+	      </tr>
+	    </thead>
+    <tbody>
+        {% if data %}
+            {% for name in data%}
+                <tr>
+                    <td>{{name.title}}</td>
+                    <td>No Image</td>
+                </tr>
+            {%endfor%}
+        {% else %}
+          <centre><p>There are no records.</p></centre>
+        {% endif %}
+
+    </tbody>
+  </table>
+    </div>
+{%endblock%}
