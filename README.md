@@ -5,8 +5,11 @@ pip install django
 pip install swapi
 
 Run Management command:- python manage.py load_json
-run python manage.py makemigrations 
-run python manage.py migrate
-run server python manage.py runserver
-open 127.0.0.1:8000 
 
+run python manage.py makemigrations 
+
+run python manage.py migrate
+
+run server python manage.py runserver
+
+open 127.0.0.1:8000 
