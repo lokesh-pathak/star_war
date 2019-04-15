@@ -1,0 +1,5 @@
+*.pyc
+.idea/
+app/__pycache__/*
+star_war/__pycache__/*
+db.sqlite3
