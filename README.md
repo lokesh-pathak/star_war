@@ -2,9 +2,6 @@
 search planet &amp; films from SWAPI using their name/title and save them to local database
 
 pip install django
-pip install swapi
-
-Run Management command:- python manage.py load_json
 
 run python manage.py makemigrations 
 
