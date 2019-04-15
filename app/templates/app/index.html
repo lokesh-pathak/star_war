@@ -1,43 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="col-md-6">
-            <form action="{% url 'planet'%}" method="post">
-              {%csrf_token%}
-              Search Planets: <input type="text" name="name" class="form-control"><br>
-              <input type="submit" value="Search" class="btn btn-primary">
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form action="{% url 'film'%}" method="post">
-              {%csrf_token%}
-              Search Films: <input type="text" name="name" class="form-control"><br>
-              <input type="submit" value="Search"  class="btn btn-primary">
-            </form>
-        </div>
+    <br>
+    <div class="col-md-12">
+        <form action="{% url 'search'%}" method="post">
+            <div class="row">
+                  {%csrf_token%}
+                <div class="col-md-7">
+                    <input type="text" name="name" class="form-control" placeholder="Search films or planets" required>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" name="search_by" required>
+                        <option value="">Search By</option>
+                        <option value="planets">Planets</option>
+                        <option value="films">Films</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
     </div>
     <br>
-    <div>
-        <table class="table">
-	    <thead>
-	      <tr>
-	        <th>Title</th>
-	        <th>Image</th>
-	      </tr>
-	    </thead>
-    <tbody>
-        {% if data %}
-            {% for name in data%}
-                <tr>
-                    <td>{{name.title}}</td>
-                    <td>No Image</td>
-                </tr>
-            {%endfor%}
-        {% else %}
-          <centre><p>There are no records.</p></centre>
-        {% endif %}
-
-    </tbody>
-  </table>
+    <div class="col-md-12">
+        <h4>Saved Titles</h4>
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                    {% for name in data%}
+                        <tr>
+                            <td>{{name.title}}</td>
+                            <td>No Image</td>
+                        </tr>
+                    {%endfor%}
+                {% else %}
+                  <centre><p>There are no records.</p></centre>
+                {% endif %}
+            </tbody>
+        </table>
     </div>
 {%endblock%}
+
+

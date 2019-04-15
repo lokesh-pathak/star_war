@@ -1,24 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-	<p>Search Result:</p>
-	<table class="table">
-	    <thead>
-	      <tr>
-	        <th>Title</th>
-	        <th>Image</th>
-	        <th>Add</th>
-	      </tr>
-	    </thead>
-    <tbody>
-    	{% for name in data%}
-			<tr>
-				<td>{{name}}</td>
-				<td>No Image</td>
-				<td>
-					<button class="btn btn-primary" onclick="location.href='{% url 'add' %}?name={{name}}'">Add</button>
-					</td>
-			</tr>
-      	{%endfor%}
-    </tbody>
-  </table>
+    <br>
+    <div class="col-md-12">
+		<h5><a href="/" class="float-left">Back</a></h5>
+		<h3>Search Result:</h3>
+		{% if data %}
+			<table class="table table-bordered">
+				<thead>
+				  <tr>
+					<th>Title</th>
+					<th>Image</th>
+					<th>Add</th>
+				  </tr>
+				</thead>
+				<tbody>
+					{% for d in data%}
+						<tr>
+							<td>
+								{% if d.name %}
+									{{d.name}}</td>
+								{%else%}
+									{{d.title}}
+								{%endif%}
+							</td>
+							<td>No Image</td>
+							<td>
+								<button class="btn btn-primary" onclick="location.href='{% url 'add' %}?name={{d.name}}'">Add</button>
+							</td>
+						</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		{% else %}
+		  <centre><p>There are no records.</p></centre>
+		{% endif %}
+	</div>
 {%endblock%}
